@@ -44,6 +44,8 @@
 
               <!-- GitHub Login Button -->
               <login-with-github />
+              <!-- Facebook Login Button -->
+              <login-with-facebook />
             </div>
           </div>
         </form>
@@ -55,12 +57,14 @@
 <script>
 import Form from 'vform'
 import LoginWithGithub from '~/components/LoginWithGithub'
+import LoginWithFacebook from '~/components/LoginWithFacebook'
 
 export default {
   middleware: 'guest',
 
   components: {
-    LoginWithGithub
+      LoginWithGithub,
+      LoginWithFacebook
   },
 
   metaInfo () {

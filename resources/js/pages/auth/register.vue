@@ -52,7 +52,9 @@
               </v-button>
 
               <!-- GitHub Register Button -->
-              <login-with-github />
+<!--              <login-with-github />-->
+              <!-- Facebook Register Button -->
+              <login-with-facebook />
             </div>
           </div>
         </form>
@@ -63,13 +65,15 @@
 
 <script>
 import Form from 'vform'
-import LoginWithGithub from '~/components/LoginWithGithub'
+// import LoginWithGithub from '~/components/LoginWithGithub'
+import LoginWithFacebook from '~/components/LoginWithFacebook'
 
 export default {
   middleware: 'guest',
 
   components: {
-    LoginWithGithub
+      // LoginWithGithub,
+      LoginWithFacebook
   },
 
   metaInfo () {
