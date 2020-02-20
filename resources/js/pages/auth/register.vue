@@ -52,6 +52,7 @@
               </v-button>
 
               <!-- GitHub Register Button -->
+              <!-- todo: remove github login entirely -->
 <!--              <login-with-github />-->
               <!-- Facebook Register Button -->
               <login-with-facebook />

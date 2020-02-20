@@ -43,7 +43,8 @@
               </v-button>
 
               <!-- GitHub Login Button -->
-              <login-with-github />
+              <!-- todo: remove github login entirely -->
+<!--              <login-with-github />-->
               <!-- Facebook Login Button -->
               <login-with-facebook />
               <!-- Google Login Button -->
