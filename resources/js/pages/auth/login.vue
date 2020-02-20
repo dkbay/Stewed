@@ -43,7 +43,12 @@
               </v-button>
 
               <!-- GitHub Login Button -->
-              <login-with-github />
+              <!-- todo: remove github login entirely -->
+<!--              <login-with-github />-->
+              <!-- Facebook Login Button -->
+              <login-with-facebook />
+              <!-- Google Login Button -->
+              <login-with-google />
             </div>
           </div>
         </form>
@@ -55,12 +60,16 @@
 <script>
 import Form from 'vform'
 import LoginWithGithub from '~/components/LoginWithGithub'
+import LoginWithFacebook from '~/components/LoginWithFacebook'
+import LoginWithGoogle from '~/components/LoginWithGoogle'
 
 export default {
   middleware: 'guest',
 
   components: {
-    LoginWithGithub
+      LoginWithGithub,
+      LoginWithFacebook,
+      LoginWithGoogle
   },
 
   metaInfo () {
