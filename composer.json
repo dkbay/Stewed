@@ -12,6 +12,7 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
         "socialiteproviders/facebook": "^1.0",
+        "socialiteproviders/google": "^3.0",
         "tymon/jwt-auth": "^1.0.0-rc.5"
     },
     "require-dev": {
