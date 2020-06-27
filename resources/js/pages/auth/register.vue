@@ -77,8 +77,8 @@ export default {
 
   components: {
     // LoginWithGithub,
-    LoginWithFacebook,
-    LoginWithGoogle
+    // LoginWithFacebook,
+    // LoginWithGoogle
   },
 
   metaInfo () {

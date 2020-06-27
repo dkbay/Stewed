@@ -67,9 +67,9 @@ export default {
   middleware: 'guest',
 
   components: {
-      LoginWithGithub,
-      LoginWithFacebook,
-      LoginWithGoogle
+     // LoginWithGithub,
+     // LoginWithFacebook,
+     // LoginWithGoogle
   },
 
   metaInfo () {
