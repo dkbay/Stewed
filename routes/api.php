@@ -47,6 +47,6 @@ Route::group(['middleware' => 'guest:api'], function () {
 
     // Recipe Routes
     Route::get('/recipe', 'RecipeController@index');
-    Route::get('/recipe/{hash}', 'RecipeController@show');
+    Route::get('/recipe/{recipe}', 'RecipeController@show');
     Route::get('/search', 'RecipeController@search');
 });
