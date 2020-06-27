@@ -53,11 +53,11 @@
 
               <!-- GitHub Register Button -->
               <!-- todo: remove github login entirely -->
-<!--              <login-with-github />-->
+              <!--<login-with-github />-->
               <!-- Facebook Register Button -->
-              <login-with-facebook />
+              <!--<login-with-facebook />-->
               <!-- Google Register Button -->
-              <login-with-google />
+              <!--<login-with-google />-->
             </div>
           </div>
         </form>
@@ -76,9 +76,9 @@ export default {
   middleware: 'guest',
 
   components: {
-      // LoginWithGithub,
-      LoginWithFacebook,
-      LoginWithGoogle
+    // LoginWithGithub,
+    LoginWithFacebook,
+    LoginWithGoogle
   },
 
   metaInfo () {
