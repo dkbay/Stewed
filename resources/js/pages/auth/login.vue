@@ -44,11 +44,11 @@
 
               <!-- GitHub Login Button -->
               <!-- todo: remove github login entirely -->
-<!--              <login-with-github />-->
+              <!--<login-with-github />-->
               <!-- Facebook Login Button -->
-              <login-with-facebook />
+              <!--<login-with-facebook />-->
               <!-- Google Login Button -->
-              <login-with-google />
+              <!--<login-with-google />-->
             </div>
           </div>
         </form>

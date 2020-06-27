@@ -10,6 +10,14 @@
     "standard"
   ],
   "rules": {
+<<<<<<< Updated upstream
     "vue/max-attributes-per-line": "off"
+=======
+    "vue/max-attributes-per-line": "off",
+    "space-before-function-paren": ["error",
+      "always"
+    ],
+    "indent": ["error", 2]
+>>>>>>> Stashed changes
   }
 }
