@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Ingredient;
+use App\Http\Requests\StoreRecipe;
 use App\Recipe;
-use App\Step;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class RecipeController extends Controller
@@ -20,43 +18,35 @@ class RecipeController extends Controller
    */
   public function index()
   {
-    return Recipe::all();
+    return Recipe::with('steps', 'ingredients')->get();
   }
 
   /**
    * Store a newly created resource in storage.
    *
-   * @param Request $request
+   * @param StoreRecipe $request
    * @return Exception|int
    */
-  public function store(Request $request)
+  public function store(StoreRecipe $request)
   {
     try {
-      $recipe = new Recipe;
+      $recipe = auth()->user()->recipes()->create([
+        'title' => $request->title,
+        'description' => $request->description
+      ]);
 
-      $recipe->title = $request->title;
-      $recipe->description = $request->description;
+      $recipe->ingredients()->create([
+        'description' => $request->ingredients
+      ]);
 
-      $recipeId = $recipe->save();
-
-      $ingredient = new Ingredient;
-
-      $ingredient->description = $request->ingredients;
-      $ingredient->recipe_id = $recipeId;
-      $ingredient->save();
-
-      $step = new Step;
-
-      $step->description = $request->steps;
-      $step->recipe_id = $recipeId;
-      $step->save();
+      $recipe->steps()->create([
+        'description' => $request->steps
+      ]);
 
       return Response::HTTP_OK;
     } catch (Exception $exception) {
       return $exception;
     }
-
-
   }
 
   /**
@@ -67,36 +57,35 @@ class RecipeController extends Controller
    */
   public function show($id)
   {
-    return Recipe::find($id);
+    return Recipe::with('ingredients', 'steps')->where('id', $id)->get();
   }
 
   /**
    * Update the specified resource in storage.
    *
-   * @param Request $request
+   * @param StoreRecipe $request
    * @param int $id
    * @return int
    */
-  public function update(Request $request, $id)
+  public function update(StoreRecipe $request, $id)
   {
     $userId = $request->user()->id;
     $recipe = Recipe::find($id);
+    if ($userId == $recipe->user->id) {
+      $recipe->update([
+        'title' => $request->title,
+        'description' => $request->description
+      ]);
 
-    if ($userId == $recipe->user()->id) {
-      if ($request->has('title')) {
-        $recipe->title = $request->title;
-      }
-      if ($request->has('description')) {
-        $recipe->description = $request->description;
-      }
-      if ($request->has('ingredients')) {
-        $recipe->ingredients()->description = $request->ingredients;
-      }
-      if ($request->has('steps')) {
-        $recipe->steps()->description = $request->steps;
-      }
+      $recipe->ingredients()->update([
+        'description' => $request->ingredients
+      ]);
 
-      $recipe->save();
+      $recipe->steps()->update([
+        'description' => $request->steps
+      ]);
+
+      return Response::HTTP_OK;
     }
 
     return Response::HTTP_BAD_REQUEST;
@@ -114,7 +103,7 @@ class RecipeController extends Controller
     $userId = auth()->user()->id;
     $recipe = Recipe::find($id);
 
-    if ($userId == $recipe->user()->id) {
+    if ($userId == $recipe->user->id) {
       $recipe->delete();
       return Response::HTTP_OK;
     }
