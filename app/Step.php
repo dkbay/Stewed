@@ -28,6 +28,6 @@ class Step extends Model
      * Get the recipe for this step
      */
     public function Recipe() {
-      return $this->belongsTo('App\Recipe');
+      return $this->belongsTo(Recipe::class, 'recipe_id');
     }
 }

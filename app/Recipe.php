@@ -31,20 +31,20 @@ class Recipe extends Model
      * Get the recipes user
      */
     public function user() {
-      return $this->belongsTo('App\User');
+      return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
      * Get the ingredients for this recipe
      */
     public function ingredients() {
-      return $this->hasMany('App\Ingredient');
+      return $this->hasMany(Ingredient::class);
     }
 
     /**
      * Get the steps for this recipe
      */
     public function steps() {
-      return $this->hasMany('App\Step');
+      return $this->hasMany(Step::class);
     }
 }

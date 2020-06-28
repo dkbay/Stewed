@@ -139,6 +139,6 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      * Get a users recipes
      */
     public function recipes() {
-      return $this->hasMany('App\Recipe');
+      return $this->hasMany(Recipe::class);
     }
 }

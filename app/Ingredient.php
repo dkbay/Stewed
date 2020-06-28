@@ -28,6 +28,6 @@ class Ingredient extends Model
      * Get the recipe for this ingredient
      */
     public function Recipe() {
-      return $this->belongsTo('App\Recipe');
+      return $this->belongsTo(Recipe::class, 'recipe_id');
     }
 }
