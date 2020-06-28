@@ -52,25 +52,24 @@ class RecipeController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param int $id
+   * @param Recipe $recipe
    * @return Recipe|Recipe[]|Collection|Model
    */
-  public function show($id)
+  public function show(Recipe $recipe)
   {
-    return Recipe::with('ingredients', 'steps')->where('id', $id)->get();
+    return $recipe->load(['ingredients', 'steps']);
   }
 
   /**
    * Update the specified resource in storage.
    *
    * @param StoreRecipe $request
-   * @param int $id
+   * @param Recipe $recipe
    * @return int
    */
-  public function update(StoreRecipe $request, $id)
+  public function update(StoreRecipe $request,Recipe $recipe)
   {
     $userId = $request->user()->id;
-    $recipe = Recipe::find($id);
     if ($userId == $recipe->user->id) {
       $recipe->update([
         'title' => $request->title,
@@ -94,14 +93,13 @@ class RecipeController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param int $id
+   * @param Recipe $recipe
    * @return int
    * @throws Exception
    */
-  public function destroy($id)
+  public function destroy(Recipe $recipe)
   {
     $userId = auth()->user()->id;
-    $recipe = Recipe::find($id);
 
     if ($userId == $recipe->user->id) {
       $recipe->delete();
