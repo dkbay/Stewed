@@ -67,9 +67,9 @@ class RecipeController extends Controller
    * @param Recipe $recipe
    * @return int
    */
-  public function update(StoreRecipe $request,Recipe $recipe)
+  public function update(StoreRecipe $request, Recipe $recipe)
   {
-    $userId = $request->user()->id;
+    $userId = auth()->user()->id;
     if ($userId == $recipe->user->id) {
       $recipe->update([
         'title' => $request->title,

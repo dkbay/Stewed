@@ -25,8 +25,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
   // Recipe Routes
   Route::post('/recipe', 'RecipeController@store');
-  Route::put('/recipe/{id}', 'RecipeController@update');
-  Route::delete('/recipe/{id}', 'RecipeController@destroy');
+  Route::put('/recipe/{recipe}', 'RecipeController@update');
+  Route::delete('/recipe/{recipe}', 'RecipeController@destroy');
   Route::post('/recipe/private', 'RecipeController@private');
 //    Route::post('/recipe/private', 'FavoriteController@create');
   Route::get('/recipe/private', 'RecipeController@index');
