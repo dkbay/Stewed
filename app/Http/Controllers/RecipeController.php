@@ -29,6 +29,7 @@ class RecipeController extends Controller
    */
   public function store(StoreRecipe $request)
   {
+    // todo: add ability to add multiple ingredient groups and step groups per recipe
     try {
       $recipe = auth()->user()->recipes()->create([
         'title' => $request->title,
@@ -57,6 +58,7 @@ class RecipeController extends Controller
    */
   public function show(Recipe $recipe)
   {
+    #todo: handle model not found error
     return $recipe->load(['ingredients', 'steps']);
   }
 
