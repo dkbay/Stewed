@@ -2,7 +2,7 @@
   <div class="main-layout">
     <navbar />
 
-    <div class="container mt-4">
+    <div class="container">
       <child />
     </div>
   </div>
@@ -19,3 +19,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  .main-layout {
+    display:flex;
+    align-items: stretch;
+  }
+  .container {
+    background-color: #fff;
+  }
+</style>

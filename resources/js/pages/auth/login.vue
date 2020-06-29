@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-lg-8 m-auto">
+    <div class="col-lg-8 mx-auto mt-5">
       <card :title="$t('login')">
         <form @submit.prevent="login" @keydown="form.onKeydown($event)">
           <!-- Email -->
@@ -44,11 +44,11 @@
 
               <!-- GitHub Login Button -->
               <!-- todo: remove github login entirely -->
-              <!--<login-with-github />-->
+<!--              <login-with-github />-->
               <!-- Facebook Login Button -->
-              <!--<login-with-facebook />-->
+              <login-with-facebook />
               <!-- Google Login Button -->
-              <!--<login-with-google />-->
+              <login-with-google />
             </div>
           </div>
         </form>
@@ -67,9 +67,9 @@ export default {
   middleware: 'guest',
 
   components: {
-      LoginWithGithub,
-      LoginWithFacebook,
-      LoginWithGoogle
+     // LoginWithGithub,
+     // LoginWithFacebook,
+     // LoginWithGoogle
   },
 
   metaInfo () {
